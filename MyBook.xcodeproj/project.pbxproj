@@ -12,6 +12,11 @@
 		E6BAB91B1F451E38004273AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6BAB9191F451E38004273AC /* Main.storyboard */; };
 		E6BAB91D1F451E38004273AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6BAB91C1F451E38004273AC /* Assets.xcassets */; };
 		E6BAB9201F451E38004273AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6BAB91E1F451E38004273AC /* LaunchScreen.storyboard */; };
+		E6BAB9281F4523AD004273AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BAB9271F4523AD004273AC /* LoginViewController.swift */; };
+		E6CB79151F455015007DC9CE /* BookListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CB79141F455015007DC9CE /* BookListTableViewController.swift */; };
+		E6CB79171F455A46007DC9CE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CB79161F455A46007DC9CE /* Book.swift */; };
+		E6CB79191F456337007DC9CE /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CB79181F456337007DC9CE /* BookDetailViewController.swift */; };
+		E6CB791B1F456E7D007DC9CE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CB791A1F456E7D007DC9CE /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		E6BAB91C1F451E38004273AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6BAB91F1F451E38004273AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6BAB9211F451E38004273AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6BAB9271F4523AD004273AC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
+		E6CB79141F455015007DC9CE /* BookListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookListTableViewController.swift; sourceTree = "<group>"; };
+		E6CB79161F455A46007DC9CE /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		E6CB79181F456337007DC9CE /* BookDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookDetailViewController.swift; path = ../BookDetailViewController.swift; sourceTree = "<group>"; };
+		E6CB791A1F456E7D007DC9CE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +64,17 @@
 		E6BAB9141F451E38004273AC /* MyBook */ = {
 			isa = PBXGroup;
 			children = (
+				E6BAB9271F4523AD004273AC /* LoginViewController.swift */,
+				E6CB79161F455A46007DC9CE /* Book.swift */,
 				E6BAB9151F451E38004273AC /* AppDelegate.swift */,
 				E6BAB9171F451E38004273AC /* ViewController.swift */,
 				E6BAB9191F451E38004273AC /* Main.storyboard */,
 				E6BAB91C1F451E38004273AC /* Assets.xcassets */,
 				E6BAB91E1F451E38004273AC /* LaunchScreen.storyboard */,
 				E6BAB9211F451E38004273AC /* Info.plist */,
+				E6CB79181F456337007DC9CE /* BookDetailViewController.swift */,
+				E6CB79141F455015007DC9CE /* BookListTableViewController.swift */,
+				E6CB791A1F456E7D007DC9CE /* WebViewController.swift */,
 			);
 			path = MyBook;
 			sourceTree = "<group>";
@@ -137,7 +152,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6BAB9281F4523AD004273AC /* LoginViewController.swift in Sources */,
 				E6BAB9181F451E38004273AC /* ViewController.swift in Sources */,
+				E6CB79191F456337007DC9CE /* BookDetailViewController.swift in Sources */,
+				E6CB79151F455015007DC9CE /* BookListTableViewController.swift in Sources */,
+				E6CB791B1F456E7D007DC9CE /* WebViewController.swift in Sources */,
+				E6CB79171F455A46007DC9CE /* Book.swift in Sources */,
 				E6BAB9161F451E38004273AC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +324,7 @@
 				E6BAB9261F451E38004273AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
