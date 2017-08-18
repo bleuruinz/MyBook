@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class BookListTableViewController: UITableViewController {
+class BookListTableViewController: UITableViewController, AddBookDelegate {
     // Book type 의 빈 Array 생성
     var books:[Book] = Array()
     
@@ -42,9 +42,18 @@ class BookListTableViewController: UITableViewController {
                          description: "조남주 장편소설 『82년생 김지영』이 민음사 ‘오늘의 젊은 작가’ 시리즈로 출간되었다. 조남주 작가는 2011년, 지적 장애가 있는 한 소년의 재능이 발견되면서 벌어지는 사건을 통해 삶의 부조리를 현실적이면서도 따뜻하게 그려낸 작품 『귀를 귀울이면』으로 ‘문학동네소설상’을 받으며 데뷔했다. 시사 교양 프로그램에서 10년 동안 일한 방송 작가답게 서민들의 일상에서 발생하는 비극을 사실적이고 공감대 높은 스토리로 표현하는 데 특출 난 재능을 보이는 작가는 신작 『82년생 김지영』에서 30대를 살고 있는 한국 여성들의 보편적인 일상을 완벽하게 재현한다.",
                          url:"http://www.bandinlunis.com/front/product/detailProduct.do?prodId=4002576")
         
+        let book4 = Book(title: "iPhone SDK 튜터리얼2",
+                         writer: nil,
+                         publisher: nil,
+                         coverImage: nil,
+                         price: nil,
+                         description: nil,
+                         url: nil)
+        
         self.books.append(book1)
         self.books.append(book2)
         self.books.append(book3)
+        self.books.append(book4)
         
 
         // Uncomment the following line to preserve selection between presentations
@@ -80,12 +89,15 @@ class BookListTableViewController: UITableViewController {
             
             let numFormatter: NumberFormatter = NumberFormatter()
             numFormatter.numberStyle = NumberFormatter.Style.decimal
-            let price = book.price
-            let priceStr = numFormatter.string(from: NSNumber(integerLiteral: price))
+            if let price = book.price {
+                let priceStr = numFormatter.string(from: NSNumber(integerLiteral: price))
+                bookCell.bookPriceLabel.text = priceStr //String(book.price)
+            } else {
+                bookCell.bookPriceLabel.text = ""
+            }
             
             bookCell.bookTitleLabel.text = book.title
             bookCell.bookWriterLabel.text = book.writer
-            bookCell.bookPriceLabel.text = priceStr //String(book.price)
             bookCell.bookImageView.image = book.coverImage
             return bookCell
         }
@@ -147,22 +159,36 @@ class BookListTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        let cell = sender as? UITableViewCell
-        let vc = segue.destination as? BookDetailViewController
         
-        guard let selectedCell = cell, let detailVC = vc else {
-            return
+        
+        if segue.identifier  == "addvc" {
+            
+            if let addVC = segue.destination as? AddBookViewController {
+                addVC.delegate = self
+            }
+            
+        } else if segue.identifier == "detailvc" {
+            let cell = sender as? UITableViewCell
+            let vc = segue.destination as? BookDetailViewController
+            
+            guard let selectedCell = cell, let detailVC = vc else {
+                return
+            }
+            
+            if let idx = self.tableView.indexPath(for: selectedCell) {
+                detailVC.book = self.books[idx.row]
+            }
+            /*        if let selCell = cell {
+             let cellIdx = self.tableView.indexPath(for: selCell)
+             print(cellIdx?.row)
+             }*/
         }
         
-        if let idx = self.tableView.indexPath(for: selectedCell) {
-            detailVC.book = self.books[idx.row]
-        }
-/*        if let selCell = cell {
-            let cellIdx = self.tableView.indexPath(for: selCell)
-            print(cellIdx?.row)
-        }*/
+    }
+    
+    func sendNewBook (book:Book) {
+        self.books.append(book)
+        self.tableView.reloadData()
     }
 }
 
